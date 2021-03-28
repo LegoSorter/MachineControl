@@ -10,7 +10,7 @@ class StartResource:
         self.motors_controller: CameraTapeMotorsController = motors_controller
 
     def on_get(self, req, resp):
-        logging.info("[StartResource] Got reuqest, starting the machine.")
+        logging.info("[StartResource] Got request, starting the machine.")
         self.motors_controller.run()
         resp.status = falcon.HTTP_OK
 

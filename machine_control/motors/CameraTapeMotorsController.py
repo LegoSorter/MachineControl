@@ -24,7 +24,7 @@ class CameraTapeMotorsController:
         gpio.setup(self.ENA, gpio.OUT)
         self.initialized = True
 
-    def run(self, forward: bool = True, hz: int = 100, duty_cycle: int = 50):
+    def run(self, forward: bool = True, hz: int = 200, duty_cycle: int = 50):
         if self.initialized is False:
             self.setup()
 
@@ -32,11 +32,11 @@ class CameraTapeMotorsController:
         pwm_value.start(duty_cycle)
 
         if forward:
-            gpio.output(self.INPUT_1, False)
-            gpio.output(self.INPUT_2, True)
-        else:
             gpio.output(self.INPUT_1, True)
             gpio.output(self.INPUT_2, False)
+        else:
+            gpio.output(self.INPUT_1, False)
+            gpio.output(self.INPUT_2, True)
 
     # def run_with_speed(self, hz: int = 100, duty_cycle: int = 50):
     #     pwm_value = gpio.PWM(self.ENA, hz)
