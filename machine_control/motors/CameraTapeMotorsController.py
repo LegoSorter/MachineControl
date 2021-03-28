@@ -27,7 +27,7 @@ class CameraTapeMotorsController:
         self.pwm = gpio.PWM(self.ENA, 200)
         self.initialized = True
 
-    def run(self, forward: bool = True, hz: int = 200, duty_cycle: int = 50):
+    def run(self, forward: bool = True, hz: int = 200, duty_cycle: int = 60):
         if self.initialized is False:
             self.setup()
 

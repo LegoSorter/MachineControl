@@ -11,7 +11,10 @@ class StartResource:
 
     def on_get(self, req, resp):
         logging.info("[StartResource] Got request, starting the machine.")
-        self.motors_controller.run()
+        duty_cycle = int(req.params.get("duty_cycle", 60))
+        frequency = int(req.params.get("frequency", 200))
+
+        self.motors_controller.run(hz=frequency, duty_cycle=duty_cycle)
         resp.status = falcon.HTTP_OK
 
 
