@@ -8,6 +8,7 @@ class CameraTapeMotorsController:
 
     def __init__(self):
         self.initialized = False
+        self.pwm = None
 
     """
     IN1 IN2 Spinning direction
@@ -22,14 +23,16 @@ class CameraTapeMotorsController:
         gpio.setup(self.INPUT_1, gpio.OUT)
         gpio.setup(self.INPUT_2, gpio.OUT)
         gpio.setup(self.ENA, gpio.OUT)
+
+        self.pwm = gpio.PWM(self.ENA, 200)
         self.initialized = True
 
     def run(self, forward: bool = True, hz: int = 200, duty_cycle: int = 50):
         if self.initialized is False:
             self.setup()
 
-        pwm_value = gpio.PWM(self.ENA, hz)
-        pwm_value.start(duty_cycle)
+        self.pwm.ChangeFrequency(hz)
+        self.pwm.start(duty_cycle)
 
         if forward:
             gpio.output(self.INPUT_1, True)
@@ -43,5 +46,8 @@ class CameraTapeMotorsController:
     #     pwm_value.start(duty_cycle)
 
     def stop(self):
+        if self.pwm is not None:
+            self.pwm.stop()
+
         gpio.cleanup()
         self.initialized = False
