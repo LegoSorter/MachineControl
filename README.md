@@ -2,7 +2,7 @@
 
 ## Quick start
 ```commandline
-uvicorn main:app -b 0.0.0.0:8000 --timeout 0 --reload
+uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 To start a machine:
 ```commandline
