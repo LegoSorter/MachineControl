@@ -1,7 +1,7 @@
 import RPi.GPIO as gpio
 
 
-class CameraTapeMotorsController:
+class CameraConveyorController:
     INPUT_1 = 17  # Input 1 for spinning direction
     INPUT_2 = 22  # Input 2 for spinning direction
     ENA = 27  # This is for controlling speed using Pulse Width Modulation

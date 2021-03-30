@@ -2,7 +2,7 @@
 
 ## Quick start
 ```commandline
-gunicorn3 -b 0.0.0.0:8000 --timeout 0 --reload machine_control.app
+uvicorn main:app -b 0.0.0.0:8000 --timeout 0 --reload
 ```
 To start a machine:
 ```commandline
