@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 
 
 class SplittingConveyorController:
-    DEFAULT_FREQUENCY = 4
+    DEFAULT_FREQUENCY = 20
 
     INPUT_1 = 23  # Input 1 for spinning direction
     INPUT_2 = 24  # Input 2 for spinning direction
@@ -29,7 +29,7 @@ class SplittingConveyorController:
         self.pwm = gpio.PWM(self.ENA, self.DEFAULT_FREQUENCY)
         self.initialized = True
 
-    def run(self, forward: bool = True, hz: int = DEFAULT_FREQUENCY, duty_cycle: int = 60):
+    def run(self, forward: bool = False, hz: int = DEFAULT_FREQUENCY, duty_cycle: int = 40):
         if self.initialized is False:
             self.setup()
 

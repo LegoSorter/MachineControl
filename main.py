@@ -10,7 +10,7 @@ splitting_conveyor_controller = SplittingConveyorController()
 
 
 @app.get("/start", status_code=status.HTTP_204_NO_CONTENT)
-async def start(frequency: int = 200, duty_cycle: int = 50):
+async def start(frequency: int = 15, duty_cycle: int = 50):
     camera_conveyor_controller.run(hz=frequency, duty_cycle=duty_cycle)
     splitting_conveyor_controller.run()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
