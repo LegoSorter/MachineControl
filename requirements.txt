@@ -1,3 +1,5 @@
 RPi.GPIO~=0.7.0
 uvicorn
 fastapi~=0.63.0
+gunicorn
+falcon
