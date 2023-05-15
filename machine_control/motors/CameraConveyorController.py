@@ -49,5 +49,5 @@ class CameraConveyorController:
         if self.pwm is not None:
             self.pwm.stop()
 
-        gpio.cleanup()
+        gpio.cleanup([self.INPUT_1, self.INPUT_2, self.ENA])
         self.initialized = False
